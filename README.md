@@ -1,0 +1,2 @@
+# mastermind
+Play mastermind game
