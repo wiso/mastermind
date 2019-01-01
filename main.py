@@ -109,7 +109,7 @@ if __name__ == '__main__':
             if secret:
                 real_response = response(secret, best_test)
             else:
-                real_response = tuple(map(int, raw_input('enter response:').split(" ")))
+                real_response = tuple(map(int, raw_input('enter response (#black #white):').split(" ")))
             temp = compute_possibilities(possibilities, best_test, real_response)
             if len(temp) > 0:
                 possibilities = temp
