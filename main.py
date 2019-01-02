@@ -4,7 +4,7 @@ import random
 
 
 def decode_color(number):
-    return {0: 'Y', 1: 'B', 2: 'R', 3: 'G', 4: 'W', 5: 'K'}.get(number, number) 
+    return {0: 'Y', 1: 'B', 2: 'R', 3: 'G', 4: 'W', 5: 'K', 6:'6', 7:'O' }.get(number, number) 
 
 
 def decode_colors(numbers):
@@ -64,7 +64,7 @@ def compute_possibilities(possibilities, test, hint):
     return set(p for p in possibilities if response(p, test) == hint)
 
 
-NCOLORS = 6
+NCOLORS = 8
 NPOSITIONS = 4
 
 if __name__ == '__main__':
@@ -75,7 +75,7 @@ if __name__ == '__main__':
 
     if args.secret is not None:
         secret = map(int, list(args.secret))
-        print "the secret is %s" % secret
+        print "the secret is %s [%s]" % (secret, decode_colors(secret))
     else:
         secret = None
 
@@ -104,7 +104,7 @@ if __name__ == '__main__':
                     best_test = test
                     nbest_test = nremaining
         first = False
-        print "move: ", decode_colors(best_test)
+        print "move: %s [%s]" % (best_test, decode_colors(best_test))
         while True:
             if secret:
                 real_response = response(secret, best_test)
@@ -120,5 +120,5 @@ if __name__ == '__main__':
         print "response: ", real_response
         print "remaining possibilities: ", nbest_test
         if nbest_test == 1:
-            print "win, solution", decode_colors(list(possibilities)[0])
+            print "win, solution %s [%s]" % (list(possibilities)[0], decode_colors(list(possibilities)[0]))
             break
