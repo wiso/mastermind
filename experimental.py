@@ -26,7 +26,7 @@ def attempt(S, scorefun, first=False):
  
 if __name__ == '__main__':
 	import sys
-	secret = sys.argv[1] if len(sys.argv) > 1 else raw_input("Please enter a code (four characters, A-F): ")
+	secret = sys.argv[1] if len(sys.argv) > 1 else input("Please enter a code (four characters, A-F): ")
 	if len(secret) == 4 and not (set(secret) - set('ABCDEF')):
 		print("Solving...")
 		attempts = 0

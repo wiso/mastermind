@@ -1,5 +1,4 @@
 from itertools import product
-from itertools import izip
 import random
 
 
@@ -18,7 +17,7 @@ def first_move(npositions, ncolors):
     second = 1
     result = []
     for i in range(npositions):
-        if i < npositions / 2:
+        if i < npositions // 2:
             result.append(first)
         else:
             result.append(second)
@@ -41,7 +40,7 @@ def response(secret, test):
     secret = list(secret[:])
     test = list(test[:])
 
-    for i, (s, t) in enumerate(izip(secret, test)):
+    for i, (s, t) in enumerate(zip(secret, test)):
         if s == t:
             k += 1
             secret[i] = None
@@ -74,8 +73,8 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     if args.secret is not None:
-        secret = map(int, list(args.secret))
-        print "the secret is %s [%s]" % (secret, decode_colors(secret))
+        secret = list(map(int, list(args.secret)))
+        print("the secret is %s [%s]" % (secret, decode_colors(secret)))
     else:
         secret = None
 
@@ -104,21 +103,21 @@ if __name__ == '__main__':
                     best_test = test
                     nbest_test = nremaining
         first = False
-        print "move: %s [%s]" % (best_test, decode_colors(best_test))
+        print("move: %s [%s]" % (best_test, decode_colors(best_test)))
         while True:
             if secret:
                 real_response = response(secret, best_test)
             else:
-                real_response = tuple(map(int, raw_input('enter response (#black #white):').split(" ")))
+                real_response = tuple(map(int, input('enter response (#black #white):').split(" ")))
             temp = compute_possibilities(possibilities, best_test, real_response)
             if len(temp) > 0:
                 possibilities = temp
                 break
             else:
-                print "wrong response, no more possibilities, retry"
+                print("wrong response, no more possibilities, retry")
         nbest_test = len(possibilities)
-        print "response: ", real_response
-        print "remaining possibilities: ", nbest_test
+        print("response: ", real_response)
+        print("remaining possibilities: ", nbest_test)
         if nbest_test == 1:
-            print "win, solution %s [%s]" % (list(possibilities)[0], decode_colors(list(possibilities)[0]))
+            print("win, solution %s [%s]" % (list(possibilities)[0], decode_colors(list(possibilities)[0])))
             break

@@ -23,18 +23,18 @@ At each step:
 
 ### `main.py`
 
-Requires **Python 2**.
+Requires **Python 3**.
 
 **Interactive mode** – the program suggests a move; you enter the response manually:
 
 ```
-python main.py
+python3 main.py
 ```
 
 **Automatic mode** – supply the secret code as a string of digits (0–7):
 
 ```
-python main.py --secret 0123
+python3 main.py --secret 0123
 ```
 
 #### Colour legend for `main.py`
@@ -58,24 +58,24 @@ enter response (#black #white): 1 2
 
 ### `experimental.py`
 
-Requires **Python 2**.
+Requires **Python 3**.
 
 **Interactive mode** – enter a 4-character code using the letters A–F when prompted:
 
 ```
-python experimental.py
+python3 experimental.py
 ```
 
 **Automatic mode** – pass the secret code as a command-line argument:
 
 ```
-python experimental.py AABB
+python3 experimental.py AABB
 ```
 
 ## Example
 
 ```
-$ python main.py --secret 0123
+$ python3 main.py --secret 0123
 the secret is [0, 1, 2, 3] [YBRG]
 move: [0, 0, 1, 1] [YYBB]
 response:  (0, 2)
